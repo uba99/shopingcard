@@ -10,16 +10,26 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import HomePage from 'containers/HomePage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import GlobalStyle from '../../global-styles';
+import Home from '../Home/Loadable';
+import Navbar from '../../components/Navbar/Loadable';
+import Addtodo from '../Addtodo/Loadable';
+import Shopingcard from '../Shopingcard/Loadable';
 
 export default function App() {
   return (
     <div>
+      <Route path="/" component={Navbar} />
       <Switch>
-        <Route exact path="/" component={HomePage} />
+        <Route path="/Home" component={Home} />
+        <Route path="/todo" component={Addtodo} />
+        <Route
+          path="/Shopingcard"
+          render={props => <Shopingcard {...props} />}
+        />
+
         <Route component={NotFoundPage} />
       </Switch>
       <GlobalStyle />
